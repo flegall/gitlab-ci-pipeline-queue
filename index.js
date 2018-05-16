@@ -3,6 +3,8 @@ var request = require("request");
 
 const { CI_PROJECT_URL, CI_PIPELINE_ID, GITLAB_API_TOKEN } = process.env;
 
+console.log({ CI_PROJECT_URL, CI_PIPELINE_ID, GITLAB_API_TOKEN });
+
 var options = {
   method: "GET",
   url: `${CI_PROJECT_URL}/pipelines.json`,
@@ -21,6 +23,7 @@ function pollPipelines() {
     if (error) throw new Error(error);
     const bodyParsed = JSON.parse(body);
     const { pipelines } = bodyParsed;
+    console.log(bodyParsed);
     if (pipelines.length <= 1) {
       console.log("No pipelines in queue, ready to build !");
       process.exit(0);
