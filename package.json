@@ -1,6 +1,6 @@
 {
   "name": "gitlab-ci-pipeline-queue",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "index.js",
   "author": "Florent Le Gall <florent.legall@gmail.com>",
   "license": "MIT",
