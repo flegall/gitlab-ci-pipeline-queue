@@ -1,11 +1,13 @@
 {
   "name": "gitlab-ci-pipeline-queue",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "author": "Florent Le Gall <florent.legall@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "request": "^2.86.0"
   },
-  "bin": { "gitlab-ci-pipeline-queue": "./index.js" }
+  "bin": {
+    "gitlab-ci-pipeline-queue": "./index.js"
+  }
 }
