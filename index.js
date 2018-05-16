@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 var request = require("request");
 
-const { CI_PROJECT_URL, CI_JOB_TOKEN, CI_PIPELINE_ID } = process.env;
+const { CI_PROJECT_URL, CI_PIPELINE_ID, GITLAB_API_TOKEN } = process.env;
 
 var options = {
   method: "GET",
@@ -9,7 +9,7 @@ var options = {
   qs: {
     scope: "running",
     page: "1",
-    private_token: CI_JOB_TOKEN
+    private_token: GITLAB_API_TOKEN
   },
   headers: {
     "Cache-Control": "no-cache"
