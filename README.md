@@ -5,7 +5,7 @@ A simple pipeline queue tool for gitlab ci that will queue pipelines to prevent 
 This is a **HACKY** workaround for this issue https://gitlab.com/gitlab-org/gitlab-ce/issues/20481
 
 It will poll gitlab's API and only return when the current pipeline should run.
-It's not at all optimal as it will use runner instance for waiting and polling gitlab.
+It's not at all optimal as it will use runner instances for waiting and polling gitlab's API.
 
 Use it at your own risk.
 
