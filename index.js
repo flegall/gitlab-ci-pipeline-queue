@@ -34,6 +34,8 @@ function pollPipelines() {
         console.log(
           "The current pipeline is not the oldest one, let's wait for 5 seconds and retry"
         );
+        console.log("all pipelines", pipelineIds);
+        console.log("current pipeline", CI_PIPELINE_ID);
         setTimeout(() => {
           pollPipelines();
         }, 5000);
