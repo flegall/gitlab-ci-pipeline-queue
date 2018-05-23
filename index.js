@@ -36,6 +36,7 @@ function pollPipelines() {
         );
         console.log("all pipelines", pipelineIds);
         console.log("current pipeline", CI_PIPELINE_ID);
+        console.log("lowest pipeline", lowestPipelineId);
         setTimeout(() => {
           pollPipelines();
         }, 5000);
