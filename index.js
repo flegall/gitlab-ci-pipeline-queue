@@ -27,7 +27,8 @@ function pollPipelines() {
     } else {
       const pipelineIds = pipelines.map(pipeline => pipeline.id);
       const lowestPipelineId = Math.min(...pipelineIds);
-      if (lowestPipelineId === CI_PIPELINE_ID) {
+      const currentPipelineId = parseInt(CI_PIPELINE_ID, 10);
+      if (lowestPipelineId === currentPipelineId) {
         console.log("The current pipeline is the oldest one, ready to build !");
         process.exit(0);
       } else {
@@ -35,7 +36,7 @@ function pollPipelines() {
           "The current pipeline is not the oldest one, let's wait for 5 seconds and retry"
         );
         console.log("all pipelines", pipelineIds);
-        console.log("current pipeline", CI_PIPELINE_ID);
+        console.log("current pipeline", currentPipelineId);
         console.log("lowest pipeline", lowestPipelineId);
         setTimeout(() => {
           pollPipelines();
