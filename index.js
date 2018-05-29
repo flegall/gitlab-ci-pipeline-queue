@@ -1,9 +1,21 @@
 #!/usr/bin/env node
-var request = require("request");
+const request = require("request");
 
 const { CI_PROJECT_URL, CI_PIPELINE_ID, GITLAB_API_TOKEN } = process.env;
 
-var options = {
+if (!CI_PROJECT_URL) {
+  throw new Error("Env var CI_PROJECT_URL not present");
+}
+
+if (!CI_PIPELINE_ID) {
+  throw new Error("Env var CI_PIPELINE_ID not present");
+}
+
+if (!GITLAB_API_TOKEN) {
+  throw new Error("Env var GITLAB_API_TOKEN not present");
+}
+
+const options = {
   method: "GET",
   url: `${CI_PROJECT_URL}/pipelines.json`,
   qs: {
@@ -35,9 +47,6 @@ function pollPipelines() {
         console.log(
           "The current pipeline is not the oldest one, let's wait for 5 seconds and retry"
         );
-        console.log("all pipelines", pipelineIds);
-        console.log("current pipeline", currentPipelineId);
-        console.log("lowest pipeline", lowestPipelineId);
         setTimeout(() => {
           pollPipelines();
         }, 5000);
